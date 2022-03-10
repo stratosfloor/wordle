@@ -103,19 +103,24 @@ const data = [
 ]
 
 export function getWord(list, numberOfLetters, uniqueLetters = false) {
+  let payload = [];
   if (!uniqueLetters) {
-    const payload =  list.filter((word) => word.length == numberOfLetters);
-    return payload[Math.floor(Math.random()*payload.length)]
+    payload = list.filter((word) => word.length == numberOfLetters);
   } else {
-    const payload = list
+    payload = list
       .filter((word) => word.length == numberOfLetters)
       .filter((word) => numberOfLetters == new Set(word).size);
-    return payload[Math.floor(Math.random()*payload.length)] 
+  }
+  if (payload.length > 0) {
+    return payload[Math.floor(Math.random() * payload.length)];
+  } else {
+    console.log("No word found");
+    return;;
   }
 }
 
 
 
-const word = getWord(data, 7);
+const word = getWord(data, 15, true);
 console.log(word);
 
