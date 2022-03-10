@@ -1,6 +1,6 @@
 export function guessFeedback(guess, answer) {
   if (guess.length != answer.length) {
-    return console.error('error');
+    return console.error("error");
   }
   const localAnswer = new Array(...new Set(answer));
   const NUMBER_OF_LETTERS = 5;
