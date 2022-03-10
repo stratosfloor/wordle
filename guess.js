@@ -1,6 +1,6 @@
-export function guessFeedback(guess, answer) {
+export function guess(guess, answer) {
   if (guess.length != answer.length) {
-    return console.error("error");
+    return "error";
   }
   const localAnswer = new Array(...new Set(answer));
   const NUMBER_OF_LETTERS = 5;
@@ -26,6 +26,8 @@ export function guessFeedback(guess, answer) {
   for (let j = 0; j < NUMBER_OF_LETTERS; j++) {
     if (payload[j].result === "" && localAnswer.includes(guess[j])) {
       payload[j].result = "misplaced";
+      let index = localAnswer.indexOf(guess[j]);
+      localAnswer.splice(index, 1);
     } else if (payload[j].result === "" && !localAnswer.includes(guess[j])) {
       payload[j].result = "incorrect";
     }
