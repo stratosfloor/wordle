@@ -104,17 +104,18 @@ const data = [
 
 export function getWord(list, numberOfLetters, uniqueLetters = false) {
   if (!uniqueLetters) {
-    return list.filter((word) => word.length == numberOfLetters);
+    const payload =  list.filter((word) => word.length == numberOfLetters);
+    return payload[Math.floor(Math.random()*payload.length)]
   } else {
-    return list
+    const payload = list
       .filter((word) => word.length == numberOfLetters)
-      .filter((word) => numberOfLetters == new Set(word).size)
-      
+      .filter((word) => numberOfLetters == new Set(word).size);
+    return payload[Math.floor(Math.random()*payload.length)] 
   }
 }
 
 
 
-const word = getWord(data, 7, true);
+const word = getWord(data, 7);
 console.log(word);
 
