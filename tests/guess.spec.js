@@ -3,7 +3,7 @@ import { guess } from "../guess";
 
 
 test('Guess is empty, should retur error message', () => {
-  expect(guess('','CYKLA')).toBe('error')
+  expect(guess('','CYKLA')).toBeNull()
 })
 
 test('Guess correct', () => {
