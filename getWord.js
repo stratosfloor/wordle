@@ -115,12 +115,12 @@ export function getWord(list, numberOfLetters, uniqueLetters = false) {
     return payload[Math.floor(Math.random() * payload.length)];
   } else {
     console.log("No word found");
-    return;;
+    return null;
   }
 }
 
 
 
-const word = getWord(data, 15, true);
+const word = getWord(data, 10);
 console.log(word);
 
