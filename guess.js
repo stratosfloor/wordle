@@ -1,11 +1,13 @@
 export function guess(guess, answer) {
   if (guess.length != answer.length) {
-    return "error";
+    console.log("error");
+    return null;
   }
   const uniqueLetters = new Array(...new Set(answer));
   const NUMBER_OF_LETTERS = 5;
   const payload = [];
 
+  // Sets correct or incorrect for all unique letters
   for (let i = 0; i < NUMBER_OF_LETTERS; i++) {
     const obj = {};
     let value = "";
@@ -23,13 +25,20 @@ export function guess(guess, answer) {
     payload.push(obj);
   }
 
-  for (let j = 0; j < NUMBER_OF_LETTERS; j++) {
-    if (payload[j].result === "" && uniqueLetters.includes(guess[j])) {
-      payload[j].result = "misplaced";
-      let index = uniqueLetters.indexOf(guess[j]);
-      uniqueLetters.splice(index, 1);
-    } else if (payload[j].result === "" && !uniqueLetters.includes(guess[j])) {
-      payload[j].result = "incorrect";
+  // If guess of answer contains non-unique letters
+  // set misplaced or incorrect
+  if (uniqueLetters.length != NUMBER_OF_LETTERS) {
+    for (let j = 0; j < NUMBER_OF_LETTERS; j++) {
+      if (payload[j].result === "" && uniqueLetters.includes(guess[j])) {
+        payload[j].result = "misplaced";
+        let index = uniqueLetters.indexOf(guess[j]);
+        uniqueLetters.splice(index, 1);
+      } else if (
+        payload[j].result === "" &&
+        !uniqueLetters.includes(guess[j])
+      ) {
+        payload[j].result = "incorrect";
+      }
     }
   }
   return payload;
