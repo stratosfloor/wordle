@@ -1,6 +1,5 @@
 export function guess(guess, answer) {
   if (guess.length != answer.length) {
-    console.log("error");
     return null;
   }
   const uniqueLetters = new Array(...new Set(answer));
