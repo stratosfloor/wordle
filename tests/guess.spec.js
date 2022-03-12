@@ -1,6 +1,18 @@
 import { expect, test } from "@jest/globals";
 import { guess } from "../guess";
 
+/*
+Test all outcomes of guesses and answers
+
+  - No guess
+  - Correct guess
+  - All letters is guess is wrong
+  - One letter wrong
+  - Same letter more than once in guess
+  - Same letter more than once in answer
+  - Same letter more than once in both guess and answer
+
+*/
 
 test('Guess is empty, should retur null', () => {
   expect(guess('','CYKLA')).toBeNull()
@@ -28,6 +40,34 @@ test('Correct guess', () => {
       {
         letter: 'Å',
         result: 'correct',
+      }
+    ]
+  )
+})
+
+
+test('Test with one letter wrong', () => {
+  expect(guess('AAAAA','AAAAB')).toStrictEqual(
+    [
+      {
+        letter: 'A',
+        result: 'correct',
+      },
+      {
+        letter: 'A',
+        result: 'correct',
+      },
+      {
+        letter: 'A',
+        result: 'correct',
+      },
+      {
+        letter: 'A',
+        result: 'correct',
+      },
+      {
+        letter: 'A',
+        result: 'incorrect',
       }
     ]
   )
