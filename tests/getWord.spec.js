@@ -106,12 +106,17 @@ const data = [
 ]
 
 test('Test if function return null when no word match', () => {
-  const word = (getWord(data, 100));
-  expect(word).toBeNull();
+  expect(getWord(data, 100)).toBeNull();
+})
+
+test('Test that return is string', () => {
+  expect(typeof getWord(data,4)).toBe('string')
+})
+
+test('Test that function return', () => {
+  expect(getWord(data,4)).toHaveLength(4)
 })
 
 test('Test if function returns the word "unsuitable"', () => {
-  const word = (getWord(data,10));
-  expect(word).toBe('unsuitable');
+  expect(getWord(data,10)).toBe('unsuitable');
 })
-
