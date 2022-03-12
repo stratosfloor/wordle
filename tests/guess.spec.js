@@ -2,11 +2,11 @@ import { expect, test } from "@jest/globals";
 import { guess } from "../guess";
 
 
-test('Guess is empty, should retur error message', () => {
+test('Guess is empty, should retur null', () => {
   expect(guess('','CYKLA')).toBeNull()
 })
 
-test('Guess correct', () => {
+test('Correct guess', () => {
   expect(guess('HALLÅ','HALLÅ')).toStrictEqual(
     [
       {
@@ -33,7 +33,7 @@ test('Guess correct', () => {
   )
 })
 
-test('Simple test with guess "HALLÅ" and answer "CYKLA"', () => {
+test('Test with two of the same letters in guess and one is correct"', () => {
   expect(guess('HALLÅ','CYKLA')).toStrictEqual(
     [
       {
@@ -114,7 +114,8 @@ test('Guess is all same letter and answer contains four of that letter', () => {
   )
 })
 
-test('Guess same letter many times, should give misplaced once the incorrect', () => {
+
+test('Test with many of the same letters i both guess and answer', () => {
   expect(guess('AABAA','BBABB')).toStrictEqual(
     [
       {
